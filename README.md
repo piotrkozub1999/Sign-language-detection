@@ -7,7 +7,7 @@ Celem naszego projektu jest stworzenie głębokiej sieci neuronowej służacej d
 Zbiór danych posiada 24 klasy odpowiadające poszczególnym literom alfabetu. W projekcie nie uwzględniamy litery "J" oraz "Z", ponieważ zasada ich wizualizacji polega na dynamicznym ruchu ręką.
 
 ### Wykorzystywane litery języka migowego:
-# ![title](./ImagesNotebook\American-Sign-Language-alphabet-community-used-including-letters-from-A-to-Y-excluding.png)
+![title](./ImagesNotebook/American-Sign-Language-alphabet-community-used-including-letters-from-A-to-Y-excluding.png)
 
 ###  Importowanie bibliotek
 
