@@ -384,7 +384,6 @@ test_df.info()
     memory usage: 43.2 MB
     
 
-
 ```python
 for col in train_df:
     train_df[col] = train_df[col].astype('int')
