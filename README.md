@@ -1479,7 +1479,7 @@ def keras_predict(model, image):
 
 ```python
 # cap = cv2.VideoCapture(0) ## Kamera laptopa
-'''cap = cv2.VideoCapture(2)   ## Kamera zewnętrzna
+cap = cv2.VideoCapture(2)   ## Kamera zewnętrzna
 
 model = models.load_model('finalModel.h5')
 
@@ -1517,120 +1517,12 @@ while True:
         break
 
 cap.release()
-cv2.destroyAllWindows()'''
+cv2.destroyAllWindows()
 ```
-
-
-
-
-    "cap = cv2.VideoCapture(2)   ## Kamera zewnętrzna\n\nmodel = models.load_model('finalModel.h5')\n\n\nwhile True:\n\n    ret, frame = cap.read()\n    \n    ##############################\n    frame=cv2.flip(frame, 1)\n\n    #define region of interest\n    roi = frame[100:400, 320:620]\n    #cv2.imshow('roi', roi)\n    roi = cv2.cvtColor(roi, cv2.COLOR_BGR2GRAY)\n    roi = cv2.resize(roi, (28, 28), interpolation = cv2.INTER_AREA)\n    \n    cv2.imshow('roi scaled and gray', roi)\n    copy = frame.copy()\n    cv2.rectangle(copy, (320, 100), (620, 400), (255,0,0), 5)\n    \n    roi = roi.reshape(1,28,28,1) \n    roi = roi/255\n    pred_probab, pred_class = keras_predict(model,roi)\n     \n    # print(pred_probab*100)\n    # print(X_train[np.argmax(Y_proba)])\n        \n    #wynik = np.argmax(Y_proba)\n    litera = getLetter(pred_class)\n    cv2.putText(copy, litera, (300 , 100), cv2.FONT_HERSHEY_COMPLEX, 2, (0, 255, 0), 2)\n    cv2.imshow('frame', copy)    \n    \n    if cv2.waitKey(1) == 13: #13 odpowiada za enter\n        break\n\ncap.release()\ncv2.destroyAllWindows()"
-
-
-
-
-```python
-results = load_images_from_folder("Results/")
-
-fig,axe=plt.subplots(4,6,figsize = (18,9))
-axe[0,0].imshow(results[0], cmap='gray')
-axe[0,0].set_title('Litera: A')
-axe[0,0].axis('off')
-axe[0,1].imshow(results[1], cmap='gray')
-axe[0,1].set_title('Litera: B')
-axe[0,1].axis('off')
-axe[0,2].imshow(results[2], cmap='gray')
-axe[0,2].set_title('Litera: C')
-axe[0,2].axis('off')
-axe[0,3].imshow(results[3], cmap='gray')
-axe[0,3].set_title('Litera: D')
-axe[0,3].axis('off')
-axe[0,4].imshow(results[4], cmap='gray')
-axe[0,4].set_title('Litera: E')
-axe[0,4].axis('off')
-axe[0,5].imshow(results[5], cmap='gray')
-axe[0,5].set_title('Litera: F')
-axe[0,5].axis('off')
-axe[1,0].imshow(results[6], cmap='gray')
-axe[1,0].set_title('Litera: G')
-axe[1,0].axis('off')
-axe[1,1].imshow(results[7], cmap='gray')
-axe[1,1].set_title('Litera: H')
-axe[1,1].axis('off')
-axe[1,2].imshow(results[8], cmap='gray')
-axe[1,2].set_title('Litera: I')
-axe[1,2].axis('off')
-axe[1,3].imshow(results[9], cmap='gray')
-axe[1,3].set_title('Litera: K')
-axe[1,3].axis('off')
-axe[1,4].imshow(results[10], cmap='gray')
-axe[1,4].set_title('Litera: L')
-axe[1,4].axis('off')
-axe[1,5].imshow(results[11], cmap='gray')
-axe[1,5].set_title('Litera: M')
-axe[1,5].axis('off')
-axe[2,0].imshow(results[12], cmap='gray')
-axe[2,0].set_title('Litera: N')
-axe[2,0].axis('off')
-axe[2,1].imshow(results[13], cmap='gray')
-axe[2,1].set_title('Litera: O')
-axe[2,1].axis('off')
-axe[2,2].imshow(results[14], cmap='gray')
-axe[2,2].set_title('Litera: P')
-axe[2,2].axis('off')
-axe[2,3].imshow(results[15], cmap='gray')
-axe[2,3].set_title('Litera: Q')
-axe[2,3].axis('off')
-axe[2,4].imshow(results[16], cmap='gray')
-axe[2,4].set_title('Litera: R')
-axe[2,4].axis('off')
-axe[2,5].imshow(results[17], cmap='gray')
-axe[2,5].set_title('Litera: S')
-axe[2,5].axis('off')
-axe[3,0].imshow(results[18], cmap='gray')
-axe[3,0].set_title('Litera: T')
-axe[3,0].axis('off')
-axe[3,1].imshow(results[19], cmap='gray')
-axe[3,1].set_title('Litera: U')
-axe[3,1].axis('off')
-axe[3,2].imshow(results[20], cmap='gray')
-axe[3,2].set_title('Litera: V')
-axe[3,2].axis('off')
-axe[3,3].imshow(results[21], cmap='gray')
-axe[3,3].set_title('Litera: W')
-axe[3,3].axis('off')
-axe[3,4].imshow(results[22], cmap='gray')
-axe[3,4].set_title('Litera: X')
-axe[3,4].axis('off')
-axe[3,5].imshow(results[23], cmap='gray')
-axe[3,5].set_title('Litera: Y')
-axe[3,5].axis('off')
-```
-
-
-
-
-    (-0.5, 627.5, 469.5, -0.5)
-
-
 
 
     
 ![png](SignLanguageDetection_files/SignLanguageDetection_80_1.png)
     
-
-
-
-```python
-'''plt.figure()
-ily_example = cv2.imread("Example/ILY/ILY_RESULT.png")
-ily_example = cv2.cvtColor(ily_example, cv2.COLOR_BGR2RGB)
-plt.imshow(ily_example, cmap='gray')
-plt.axis('off')'''
-```
-
-
-
-
-    'plt.figure()\nily_example = cv2.imread("Example/ILY/ILY_RESULT.png")\nily_example = cv2.cvtColor(ily_example, cv2.COLOR_BGR2RGB)\nplt.imshow(ily_example, cmap=\'gray\')\nplt.axis(\'off\')'
 
 
